@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sparky Test Page</title>
+</head>
+<body>
+  <h1>🧠 Testing Sparky</h1>
+  <p>Ask Sparky something like: <code>Open the CX support site</code></p>
+
+  <!-- Embed your ElevenLabs Agent -->
+  <iframe
+    src="https://elevenlabs.io/app/talk-to?agent_id=agent_01jxvt6agzeqprc9cvvbnpqs9s"
+    width="100%"
+    height="600"
+    style="border: none;"
+  ></iframe>
+
+  <!-- Client tool listener for openBrowserTab -->
+  <script>
+    window.elevenlabsClientTools = window.elevenlabsClientTools || {};
+    window.elevenlabsClientTools.openBrowserTab = function({ url }) {
+      if (url) {
+        console.log("[Sparky] Opening browser tab to:", url);
+        window.open(url, "_blank");
+      } else {
+        console.warn("[Sparky] No URL provided.");
+      }
+    };
+  </script>
+</body>
+</html>
